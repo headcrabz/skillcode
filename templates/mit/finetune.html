@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{%block style%}
+<style type="text/css">
+     #map {
+        width: 500px;
+        height: 500px;
+      }
+
+
+      .slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+
+
+    </style>
+
+
+{% endblock %}
+{%block script%}
+<script>
+
+  var slider1 = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output1.innerHTML = slider1.value;
+
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+
+  var slider2 = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output2.innerHTML = slider2.value;
+
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+  var slider3 = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output3.innerHTML = slider3.value;
+
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}
+
+  </script>
+{%endblock %}
+{% block content %}
+<br><br>
+
+ <center><h1>Welcome to Genius Finder, when you want to find the best </h1>
+ <img class="img-circle" src='{% static "images/pages/imagery.jpg" %}' alt="Generic placeholder image" width="140" height="140">
+ </center>
+ <hr>
+  <div class="container-fluid padtb" > 
+
+ <div class="col-md-8 col-md-offset-2">
+  <hr>
+
+
+  <center>
+    <img  src='{% static "images/pages/flamingo.gif" %}' alt="Generic placeholder image" width="100" height="100">
+
+ <h3> I'll send my son to git hub repos </h3>
+ <h3> I'll send my daughter to Linkkedin Profiles </h3>
+ <h3> I'll send my wife to Google Scholar profiles </h3>
+ <h3> I'll go for the IEEE mentions </h3>
+ <br>
+<h2> I ll keep walking till I find the best, I ll discuss with my family and I ll notify you !</h2>
+<hr>
+
+
+<h2>Oh, How many people do you wish to hire? </h1>
+</center>
+<div class="slidecontainer">
+  <input type="range" min="1" max="100" value="50" class="slider3" id="myRange">
+  <p>Value: <span id="demo3"></span></p>
+</div>
+
+<center>
+<a class="btn btn-lg btn-danger" href="{% url 'results' profile '0.95'%}" role="button"> Want the best!</a> 
+
+</center>
+
+  <hr>
+
+
+
+ </div>
+ </div>
+
+
+{% endblock %}

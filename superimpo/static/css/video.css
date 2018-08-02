@@ -1,0 +1,11 @@
+video#test {
+	height: $(window).width();
+	width : $(window).height();
+}
+.grayscale {
+  +filter: grayscale(1);
+}
+.sepia {
+ +filter: sepia(1);
+}.blur {
+  +filter: blur(3px); }

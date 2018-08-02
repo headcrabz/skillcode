@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{%block style%}
+<style type="text/css">
+     #map {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+
+
+{% endblock %}
+
+{% block content %}
+<br><br>
+
+ 
+ 
+  <div class="container-fluid padtb" > 
+
+ <div class="col-md-8 col-md-offset-2">
+
+        {%if profile %}
+          <center><h1>Showing profile for {{profile}}  </h1></center>
+          <br>
+     
+
+
+           <center><h3> For {{profile}} - the skills are </h3>  
+            <br>
+            <a class="btn btn-danger" href="{% url 'runalgo' profile %}" role="button">Find Similar occupations matching the skills &raquo;</a>
+</center>
+           <hr>
+          <div class="container">
+                
+                     
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Skills</th>
+                      <th>Score</th>
+                      
+                    </tr>
+                  </thead>
+                  {%if profile|stringformat:"s" == "ApplicationDeveloper" or profile|stringformat:"s" == "Software Developers, Applications"%}
+
+                  
+         
+                  <tbody>
+
+                    <tr>
+                     <td>Reading ComprehensionImportance 3.12</td>
+                     <td>Reading ComprehensionLevel  3.88</td>
+                     </tr>
+                     <tr>
+                     <td>Active ListeningImportance  3.12</td>
+                     <td>Active ListeningLevel 3.75</td>
+                     </tr>
+                     <tr>
+                     <td>WritingImportance 3</td>
+                     <td>WritingLevel  3.5</td>
+                     </tr>
+                     <tr>
+                     <td>SpeakingImportance  3.25</td>
+                     <td>SpeakingLevel 3.75</td>
+                     </tr>
+                     <tr>
+                     <td>MathematicsImportance 2.88</td>
+                     <td>MathematicsLevel  3.75</td>
+                     </tr>
+                     <tr>
+                     <td>ScienceImportance 2.88</td>
+                     <td>ScienceLevel  3</td>
+                     </tr>
+                     <tr>
+                     <td>Critical ThinkingImportance 3.62</td>
+                     <td>Critical ThinkingLevel  4</td>
+                     </tr>
+                     <tr>
+                     <td>Active LearningImportance 3</td>
+                     <td>Active LearningLevel  3.62</td>
+                     </tr>
+                     <tr>
+                     <td>Learning StrategiesImportance 3</td>
+                     <td>Learning StrategiesLevel  3.12</td>
+                     </tr>
+                     <tr>
+                     <td>MonitoringImportance  3</td>
+                     <td>MonitoringLevel 3.75</td>
+                     </tr>
+                     <tr>
+                     <td>Social PerceptivenessImportance 2.88</td>
+                     <td>Social PerceptivenessLevel  3</td>
+                     </tr>
+                     <tr>
+                     <td>CoordinationImportance  3</td>
+                     <td>CoordinationLevel 3.38</td>
+                     </tr>
+                     <tr>
+                     <td>PersuasionImportance  2.88</td>
+                     <td>PersuasionLevel 3</td>
+                     </tr>
+                     <tr>
+                     <td>NegotiationImportance 2.75</td>
+                     <td>NegotiationLevel  2.75</td>
+                     </tr>
+                     <tr>
+                     <td>InstructingImportance 2.88</td>
+                     <td>InstructingLevel  3.38</td>
+                     </tr>
+                      <tr>
+                     <td>Service OrientationImportance 2.88</td>
+                     <td>Service OrientationLevel  3</td>
+                     </tr>
+                      <tr>
+                     <td>Complex Problem SolvingImportance 3.62</td>
+                     <td>Complex Problem SolvingLevel  4.12</td>
+                     </tr>
+                      <tr>
+                     <td>Operations AnalysisImportance 3.5</td>
+                     <td>Operations AnalysisLevel  3.75</td>
+                     </tr>
+                      <tr>
+                     <td>Technology DesignImportance 3</td>
+                     <td>Technology DesignLevel  3.62</td>
+                     </tr>
+                      <tr>
+                     <td>Equipment SelectionImportance 1.88</td>
+                     <td>Equipment SelectionLevel  1.75</td>
+                     </tr>
+                      <tr>
+                     <td>InstallationImportance  1.75</td>
+                     <td>InstallationLevel 1.5</td>
+                     </tr>
+                      <tr>
+                     <td>ProgrammingImportance 4</td>
+                     <td>ProgrammingLevel  4.75</td>
+                     </tr>
+                      <tr>
+                     <td>Operation MonitoringImportance  2.75</td>
+                     <td>Operation MonitoringLevel 3.12</td>
+                     </tr>
+                      <tr>
+                     <td>Operation and ControlImportance 2</td>
+                     <td>Operation and ControlLevel  2.25</td>
+                     </tr>
+                      <tr>
+                     <td>Equipment MaintenanceImportance 1.25</td>
+                     <td>Equipment MaintenanceLevel  0.25</td>
+                     </tr>
+                      <tr>
+                     <td>TroubleshootingImportance 2.88</td>
+                     <td>TroubleshootingLevel  4.25</td>
+                     </tr>
+                      <tr>
+                     <td>RepairingImportance 1.12</td>
+                     <td>RepairingLevel  0.12</td>
+                     </tr>
+                      <tr>
+                     <td>Quality Control AnalysisImportance  2.88</td>
+                     <td>Quality Control AnalysisLevel 3.12</td>
+                      </tr>
+                     
+                     <tr>
+                     <td>Judgment and Decision MakingImportance  3.75</td>
+                     <td>Judgment and Decision MakingLevel 4.12</td>
+                      </tr>
+
+                     <tr>
+                     <td>Systems AnalysisImportance  3.88</td>
+                     <td>Systems AnalysisLevel 4.25</td>
+                     <tr>
+                     <td>Systems EvaluationImportance  3.88</td>
+                     <td>Systems EvaluationLevel 4.5</td>
+                     <tr>
+                     <td>Time ManagementImportance 2.88</td>
+                     <td>Time ManagementLevel  3.5</td>
+                     <tr>
+                     <td>Management of Financial ResourcesImportance 2</td>
+                     <td>Management of Financial ResourcesLevel  1.88</td>
+                     <tr>
+                     <td>Management of Material ResourcesImportance  2</td>
+                     <td>Management of Material ResourcesLevel 1.88</td>
+                     <tr>
+                     <td>Management of Personnel ResourcesImportance 2.88</td>
+                     <td>Management of Personnel ResourcesLevel  3.25</td>
+                    </tr>
+
+                  </tbody>
+                {%else%}
+                  <tbody>
+
+                    <tr>
+                     <td>Reading ComprehensionImportance 3.02</td>
+                     <td>Reading ComprehensionLevel  3.78</td>
+                     </tr>
+                     <tr>
+                     <td>Active ListeningImportance  3.62</td>
+                     <td>Active ListeningLevel 3.45</td>
+                     </tr>
+                     <tr>
+                     <td>WritingImportance 3</td>
+                     <td>WritingLevel  3.5</td>
+                     </tr>
+                     <tr>
+                     <td>SpeakingImportance  3.25</td>
+                     <td>SpeakingLevel 3.75</td>
+                     </tr>
+                     <tr>
+                     <td>MathematicsImportance 3.18</td>
+                     <td>MathematicsLevel  3.8</td>
+                     </tr>
+                     <tr>
+                     <td>ScienceImportance 2.88</td>
+                     <td>ScienceLevel  3</td>
+                     </tr>
+                     <tr>
+                     <td>Critical ThinkingImportance 3.72</td>
+                     <td>Critical ThinkingLevel  4</td>
+                     </tr>
+                     <tr>
+                     <td>Active LearningImportance 3</td>
+                     <td>Active LearningLevel  3.62</td>
+                     </tr>
+                     <tr>
+                     <td>Learning StrategiesImportance 3.12</td>
+                     <td>Learning StrategiesLevel  3.12</td>
+                     </tr>
+                     <tr>
+                     <td>MonitoringImportance  3</td>
+                     <td>MonitoringLevel 3.75</td>
+                     </tr>
+                     <tr>
+                     <td>Social PerceptivenessImportance 2.88</td>
+                     <td>Social PerceptivenessLevel  3</td>
+                     </tr>
+                     <tr>
+                     <td>CoordinationImportance  3.1</td>
+                     <td>CoordinationLevel 3.48</td>
+                     </tr>
+                     <tr>
+                     <td>PersuasionImportance  2.88</td>
+                     <td>PersuasionLevel 3</td>
+                     </tr>
+                     <tr>
+                     <td>NegotiationImportance 2.55</td>
+                     <td>NegotiationLevel  2.75</td>
+                     </tr>
+                     <tr>
+                     <td>InstructingImportance 2.78</td>
+                     <td>InstructingLevel  3.38</td>
+                     </tr>
+                      <tr>
+                     <td>Service OrientationImportance 2.78</td>
+                     <td>Service OrientationLevel  3</td>
+                     </tr>
+                      <tr>
+                     <td>Complex Problem SolvingImportance 3.62</td>
+                     <td>Complex Problem SolvingLevel  4.12</td>
+                     </tr>
+                      <tr>
+                     <td>Operations AnalysisImportance 3.5</td>
+                     <td>Operations AnalysisLevel  3.75</td>
+                     </tr>
+                      <tr>
+                     <td>Technology DesignImportance 2.7</td>
+                     <td>Technology DesignLevel  3.62</td>
+                     </tr>
+                      <tr>
+                     <td>Equipment SelectionImportance 1.88</td>
+                     <td>Equipment SelectionLevel  1.75</td>
+                     </tr>
+                      <tr>
+                     <td>InstallationImportance  1.75</td>
+                     <td>InstallationLevel 1.5</td>
+                     </tr>
+                      <tr>
+                     <td>ProgrammingImportance 4</td>
+                     <td>ProgrammingLevel  4.75</td>
+                     </tr>
+                      <tr>
+                     <td>Operation MonitoringImportance  2.75</td>
+                     <td>Operation MonitoringLevel 3.12</td>
+                     </tr>
+                      <tr>
+                     <td>Operation and ControlImportance 2</td>
+                     <td>Operation and ControlLevel  2.25</td>
+                     </tr>
+                      <tr>
+                     <td>Equipment MaintenanceImportance 1.25</td>
+                     <td>Equipment MaintenanceLevel  0.25</td>
+                     </tr>
+                      <tr>
+                     <td>TroubleshootingImportance 2.88</td>
+                     <td>TroubleshootingLevel  4.25</td>
+                     </tr>
+                      <tr>
+                     <td>RepairingImportance 1.12</td>
+                     <td>RepairingLevel  0.12</td>
+                     </tr>
+                      <tr>
+                     <td>Quality Control AnalysisImportance  2.98</td>
+                     <td>Quality Control AnalysisLevel 3.22</td>
+                      </tr>
+                     
+                     <tr>
+                     <td>Judgment and Decision MakingImportance  3.75</td>
+                     <td>Judgment and Decision MakingLevel 4.12</td>
+                      </tr>
+
+                     <tr>
+                     <td>Systems AnalysisImportance  3.88</td>
+                     <td>Systems AnalysisLevel 4.25</td>
+                     <tr>
+                     <td>Systems EvaluationImportance  3.88</td>
+                     <td>Systems EvaluationLevel 4.5</td>
+                     <tr>
+                     <td>Time ManagementImportance 2.88</td>
+                     <td>Time ManagementLevel  3.5</td>
+                     <tr>
+                     <td>Management of Financial ResourcesImportance 2</td>
+                     <td>Management of Financial ResourcesLevel  1.88</td>
+                     <tr>
+                     <td>Management of Material ResourcesImportance  2</td>
+                     <td>Management of Material ResourcesLevel 1.88</td>
+                     <tr>
+                     <td>Management of Personnel ResourcesImportance 2.88</td>
+                     <td>Management of Personnel ResourcesLevel  3.25</td>
+                    </tr>
+
+                  </tbody>
+                  {% endif %}
+                </table>
+              </div>
+          
+
+          <br><hr>
+        {%endif %}
+
+ </div>
+ </div>
+
+
+{% endblock %}

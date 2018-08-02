@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{%block style%}
+<style type="text/css">
+     #map {
+        width: 500px;
+        height: 500px;
+      }
+    
+#loading {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 10%;
+   position: fixed;
+   display: block;
+   opacity: 1.0;
+   background-color: #fff;
+   z-index: 99;
+   text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 200px;
+  left: 340px;
+  z-index: 100;
+}
+
+</style>
+
+{% endblock %}
+
+{%block script%}
+
+<script language="javascript" type="text/javascript">
+     window.onload = window.setTimeout(function() {
+    document.getElementById("loading").style.display = "none"
+}, 2000);
+     // function(){ 
+     //  document.getElementById("loading").style.display = "none" } 
+</script>
+
+{%endblock%}
+{% block content %}
+
+<div id="loading">
+  <img id="loading-image" src='{% static "images/pages/flamingo.gif" %}' alt="Loading..." />
+</div>
+
+
+<br><br>
+
+ 
+ <hr>
+  <div class="container-fluid padtb" > 
+
+ <div class="col-md-8 col-md-offset-2">
+  
+
+  <center><img  src='{% static "images/pages/flamingo.gif" %}' alt="Generic placeholder image" width="100" height="100">
+<center><h1>So .. I found it !</h1></center>
+    <h4> Here's what I think to find {{profile}} as per your needs </h4>
+<hr>
+
+
+
+{% for mykey,myvalue in similarprofiles_2.items %}
+
+    <h3> {{ mykey }} : {{ myvalue }} </h3>
+
+{% endfor %}
+
+
+<h4> Based on your criteria, I picked up these profiles for my consideration</h4>
+
+   {%for i, j in similarprofiles%}
+      <a class="label" style=" font-size:  15px ;  line-height: 2.5em ;background:{{j}}"   href="{% url 'closematch' i %}"><b>{{i}}</b></a>
+
+      {%endfor%}   
+
+<hr>
+<h2>  Told you I am Smart!! </h2>
+<hr>
+<a class="btn btn-lg btn-danger" href="{% url 'loclog' profile %}" role="button">Here's more information about the location itself </a>
+
+
+<a class="btn btn-danger" href="{% url 'finetune' profile %}" role="button">Try Genius Finder &raquo;</a>
+     </center>
+
+
+
+  <hr>
+
+
+
+ </div>
+ </div>
+
+
+{% endblock %}

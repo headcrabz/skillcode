@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+
+{%block style%}
+<style>
+/*	p.test{
+		width: 11em;
+	word-wrap: break-word;
+}*/
+</style>
+{%endblock%}
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>{{title}}</h1> </center>
+
+ <div class="row"  > 
+     <h2>  About Boston </h2>
+        <hr>
+     <h4>Boston is tagged as a fun Adventurous place. A family friendly place
+     </h4>
+     <h4>Some Most popular activities here are  - 
+       <hr>
+      <ul>  
+        <li> Swimming at aquarium(if you are lucky) 
+<li>water parks.</li>
+      </ul>
+
+       
+      To have most fun you are filly prepared.
+      </h4>
+     
+        <div class="row" > 
+          <h4> Overall its a Stroller friendly place <i class="fa fa-shopping-cart fa-lx" aria-hidden="true"> -  score 7.8</i> </h4>
+
+
+        </div>
+         <p><b>
+         If you are expecting to have periods during this time:  Take this suvey and choose  which pads would  you be likley to use. </b>  </p>
+         <a class="btn btn-danger" href="http://surveys.surveyanalytics.com/a/TakeSurvey?id=3185528" > Check now</a>
+        <p><b> We want to make sure you have most fun ! </b>  </p>
+      </b>  </p>
+      
+
+
+
+<!-- <p>Humidity</p> {{weather.class}} -->
+
+ 
+    </div>
+   <hr>
+    <div class="row"  > 
+     <h2>  Weather </h2>
+          <p>UV ray index  - 6</p> 
+      <p>UV ray raw value - 6.5</p> 
+     <p>feesl like - 54 F</p> 
+
+<p>Temperature  - 58F </p> 
+
+<p>Winds   - 16 mph</p> 
+<!-- 
+     <p>UV ray index  - {{weather.uv_desc}}</p> 
+      <p>UV ray raw value - {{weather.uv_index}}</p> 
+     <p>feesl like - {{weather.feels_like}}</p> 
+
+<p>Temperature  - {{weather.temp}}</p> 
+
+<p>Winds   - {{weather.wspd}}</p> 
+ -->
+<!-- <p>Humidity</p> {{weather.class}} -->
+
+   <span>It seems like a windy day and a cold day .. you want to Use Sunscreen and </span>
+
+
+    </div>
+   
+       <div class="row">
+
+        <div class="col-md-3">
+        <h4>Dry skin care</h4>
+        <img  src='{% static "images/pages/dryskin.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Uv product</h4>
+        <img  src='{% static "images/pages/uv.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Hyradating </h4>
+        <img  src='{% static "images/pages/sculpt.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Sensitive skin</h4>
+        <img  src='{% static "images/pages/sensitive.jpg" %}' alt="Drop Picture here" width="250px" height="200px"> 
+        </div>
+
+
+    </div>
+
+    <!--  <div class="row"  >  -->
+   <hr>
+     {%for k  in data%}
+
+     <div class="row"  > 
+      <div class ="col-md-8">
+      <h2>  {{k.title}}  </h2>
+        <p><b style="color: green"> Stroller Friendly  -  7.8 <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i></b> </p>
+      <p><b> Description </b>  {{k.details.description}}</p>
+    
+      </div>
+            <div class ="col-md-4">
+            <img alt="{{ k.title}}" src="{{ k.main_image }}" width="75%" height="75%">
+      </div>
+      
+      </div>
+       {%endfor%}
+
+
+    
+   </div>
+    
+
+
+{% endblock %}

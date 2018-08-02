@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Tone analyser</h1> 
+           <h3> Speed to text by Nuance  .... </h3>
+
+    </center>
+      <hr>
+<div class="row padtb">
+        <form action="{% url 'keyword' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy}}
+        <center><input class="btn btn-info" type="submit" value="Get my Analysis!"/></center>
+    </form>
+
+    </div>
+    </div>
+
+
+{% endblock %}

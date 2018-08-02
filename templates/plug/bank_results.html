@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+
+{%block style%}
+<style>
+	p.test{
+		width: 11em;
+	word-wrap: break-word;
+}
+</style>
+{%endblock%}
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Here is analysis for the user  !</h1> </center>
+
+    <!-- <h3>Showing Content related to <b> <i>{{name}}</i></b></h3> -->
+    <hr>
+
+<!--     {%if not login %}
+    	
+    	you are not logged in !
+
+
+   	{%else%}
+   		<div  class ="row padlr20">
+   		<h4> Recommended for you! </h4>
+		{%for i in recproducts%}
+
+			<a href=""  style="padding: 20px" class="img-thumbnail" rel="prettyPhoto" title="{{ i }}"> 
+			
+				{%if j|stringformat:"s" == "Nothing" %} <img alt="{{ j }}" src='{% static "images/pages/all.png" %}' width="120px" height="120px">{% else %}<img alt="{{ j }}" src="{{ j }}" width="120px" height="120px">{%endif%}
+
+				<p class="test">{{i}}</p>
+				
+			</a>
+
+	{% if forloop.counter|divisibleby:5 %}</div><br><div class="row padlr20">{% endif %}
+		{% endfor %}
+
+
+	</div>   
+    {%endif%} -->
+
+	<div  class ="row padlr20">
+
+	<div  class="panel panel-success">
+	<div class="panel panel-heading">
+	<h5><b>Customer Profile</b></h5>
+	</div>
+	<div  class="panel-body">
+
+	<div class="row" >
+	<div class="col-md-6" > 
+	<img alt="{{ user.legal_name}}" src='{{user.face_image}}' width="140px" height="140px">
+	</div>
+	<div class="col-md-6" > 
+	<p style="color: green" ><b>Name </b>: {{user.legal_name }} </p>
+	<p style="color: green" ><b>Phone number </b>: {{user.mobile_phone_number }} </p>
+	<p style="color: green"><b>balance </b>: {{response.balance.amount}} USD</p>
+	</div>
+	</div>
+	<hr>
+	<div class="row" > 
+	<div class="col-md-6" > 
+		
+	<p style="color: green" >Customer is digitally savvy</p>
+	<p style="color: green">Credit Score is high</p>
+	<p style="color: green">HELOC near completion</p>
+	<p style="color: green">Purchasing power is high</p>
+	<p style="color: red">Savings rate % of annual income : 5%</p>
+	</div>
+	<div class="col-md-6" > 
+
+	<p style="color: green" ><b>Credit history </b>: {{user.credit_rating }} </p>
+	<p style="color: green"><b>Credit Limit </b> : {{user.credit_limit.amount}} USD</p>
+	<p style="color: green"><b>date of birth</b> : {{user.date_of_birth}} </p>
+	<p style="color: green"><b>Employment Status </b>: {{user.employment_status}}  </p>
+	<p style="color: red"><b>Number of dependants </b>: {{user.dependants}}</p>
+	</div>
+	</div>
+	</div>
+	</div>
+
+
+	<div  class="panel panel-success">
+	<div class="panel panel-heading">
+	<h4> Analysed All transactions! </h4>
+	</div>
+	<div  class="panel-body">
+	<div class="col-md-6" > 	
+	<!-- {{user}} -->
+	<h4>Information on types of transaction</h4>
+	{%for key, value in  retailers.items%}
+ 	<b>{{ key }}: </b>{{ value }}
+	{%endfor%}
+</div>
+	<div class="col-md-6" > 
+	<h4>Information on CounterParty</h4>
+	{%for  key, value in  counterparty.items%}
+		<b>{{ key }}: </b>{{ value }}
+	{%endfor%}
+	</div>
+
+		</div>
+	</div>
+
+
+
+	<div  class="panel panel-success">
+	<div class="panel panel-heading">
+	<h4> All transactions </h4>
+	</div>
+	<div  class="panel-body">
+	<!-- {{transactions}} -->
+		<!-- {{response}} 
+	}
+	}
+ -->
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>counterparty name</th>
+        <th>old balance</th>
+        <th>new balance</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%for t in  transactions%}
+
+      <tr>
+        <td>{{t.counterparty.number}}</td>
+        <td>{{t.details.value.amount}} USD</td>
+        <td>{{t.details.new_balance.amount}} USD</td>
+        <td>{{t.details.description}}</td>
+      </tr>
+
+      {%endfor%}
+    </tbody>
+  </table>
+
+
+		<p>IBAN : {{response.display_name}}</p>
+		<p>number : {{response.number}}</p>
+		<p>Username : {{response.display_name}}</p>
+		<p>balance : {{response.balance.amount}} USD</p>
+		<p>type : {{response.type}}</p>
+		<p>bank : {{response.bank_id}}</p>
+ 	
+<!-- 		<p>Name : {{response.label}}</p>
+		<p>IBAN : {{response.display_name}}</p>
+		<p>number : {{response.number}}</p>
+		<p>Username : {{response.display_name}}</p>
+		<p>balance : {{response.balance.amount}} USD</p>
+		<p>type : {{response.type}}</p>
+		<p>bank : {{response.bank_id}}</p>
+		<br><br> -->
+		</div>
+	</div>
+
+	<div  class="panel panel-success">
+	<div class="panel panel-heading">
+	<h4> Analysis! </h4>
+	</div>
+	<div  class="panel-body">
+	
+		<!-- {{response}} 
+ -->
+		<p>Name : {{response.label}}</p>
+		<p>IBAN : {{response.display_name}}</p>
+		<p>number : {{response.number}}</p>
+		<p>Username : {{response.display_name}}</p>
+		
+		<p>type : {{response.type}}</p>
+		<p>bank : {{response.bank_id}}</p>
+		<br><br>
+		</div>
+	</div>
+
+		<!-- {{retailers}} {{counterparty}} -->
+		<!-- {{products}} -->
+<!-- 		{%if products%}
+
+		{%for i in  products%}
+		 <h3>{{i.category_id}} </h3>
+		   {%for k in i.tones%}
+		   	<b>{{k.tone_name}} - </b>{{k.score}}<br>
+		   {%endfor%}
+
+			<a href=""  style="padding: 20px" class="img-thumbnail" title="{{ i.title }}"> 
+			
+				{%if not i.product_images %} <img alt="{{ i.title}}" src='{% static "images/pages/all.png" %}' width="120px" height="120px">{% else %}<img alt="{{ i.title}}" src="{{i.product_images.500 }}" width="120px" height="120px">{%endif%}
+
+				<p class="test">{{i.title}}</p>
+		
+			</a>
+	
+
+	{% if forloop.counter|divisibleby:5 %}</div><br><div class="row padlr20">{% endif %}
+		
+{% endfor %}
+		{%endif%} -->
+	</div>   
+   </div>
+    
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+{% load templateutils_tags %}
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Analysis of the Book</h1> </center>
+    <hr>
+    <div class="row"  >
+    <div class="col-md-6 padtb">
+    {%if not product.product_images %}
+     <img alt="{{ j }}" src='{% static "images/pages/all.png" %}' width="75%" height="75%">
+
+     {% else %}<img alt="{{ product.title}}" src="{{ product.product_images.500 }}" width="75%" height="75%">
+
+     {%endif%}
+     <h3><u>Publisher Summary</u></h3>
+         <h4>Keywords (with their relevance)</h4>
+    {%for i, j in keywords_summary%}
+	<a class="label" style=" font-size:  15px ;  line-height: 2.5em ;background:{{j}}"  href="{{i.dbpedia}}"><b>{{i.text}}</b></a>
+
+	{%endfor%}  	
+	<h4>Idea (with their relevance)</h4>
+	{%for i, j in concept_summary%}
+	<a class="label" style="font-size:  15px ;  line-height: 2.5em ; background:{{j}}" href="{{i.dbpedia}}"><b><b>{{i.text}}</b></a>
+	{%endfor%}
+
+	<h3><u>Review Summary</u></h3>
+    <h4>Keywords(with their relevance)</h4>
+    {%for i ,  j in keywords%}
+	<a class="label" style=" font-size:  15px ;  line-height: 2.5em ; background:{{j}};" href="{{i.dbpedia}}"><b>{{i.text}}</b></a>
+
+	{%endfor%}  	
+	<h4>Idea (with their relevance)</h4>
+	{%for i, j in concepts%}
+	<a class="label"  style="font-size:  15px ;  line-height: 2.5em ; background:{{j}}" href="{{i.dbpedia}}"><b>{{i.text}}</b></a>
+	{%endfor%}
+
+     </div>
+     <div class="col-md-6">
+     <h3> {{product.title}}	</h3><hr>
+     <p class="headerbyline"> {{product.issue_date}}</p>
+     <p class="headerbyline"> {{product.language}}</p>
+     <p class="headerbyline"> {{product.runtime_length_min}} minutes</p>
+     <p class="headerbyline"> {{product.release_date}} </p>
+     <p><b>Publisher Summary</b></p>
+      <p class="headerbyline"> {{product.publisher_summary |safe}} </p>
+      <p>Rating: <b>{{product.rating.overall_distribution.average_rating}}</b> ({{product.rating.overall_distribution.num_ratings}} reviews)</p>
+      <hr>
+      
+
+      <div class="panel panel-info">
+      <div class="panel-heading" ><h4>Imagery - Imagine as you listen </h4> </div>
+      <div class="panel-body">
+      		 
+      			{%for j , key in  images%}
+      			<p class="headerbyline">Keyword:  <b>{{key.text}}</b> , relevance : <b>{{key.relevance}}</b></p>
+      			{%for i in  j%}
+			<a href='{{i.display_sizes.0.uri}}' style="padding: 10px"  rel="prettyPhoto" title="{{ i.title }}"> 
+			
+				<img alt="{{ i.title}}" src='{{i.display_sizes.0.uri}}' width="140px" height="140px">
+
+				<!-- <p class="test">{{i.title}}</p> -->
+				<!-- <p class="test">{{k}}</p> -->
+				
+			</a>
+	
+<!-- <a href="{% static 'images/pages/delhidistrict.gif' %}" rel="prettyPhoto" title="Delhi district map" >  
+                  <img alt="Delhi Primary School District map" src="{% static 'images/pages/delhidistrict.gif' %}" width="100%" height="100%">
+                </a> -->
+			{% if forloop.counter|divisibleby:3 %}</div><br><div class="row padlr20">{% endif %}
+		{% endfor %}
+		{% endfor %}
+      </div>
+
+      </div>
+
+     </div>
+     </div>
+
+
+
+   </div>
+
+{% endblock %}

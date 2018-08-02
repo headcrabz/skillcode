@@ -1,0 +1,200 @@
+  {% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Create your own band" />
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="Create your own band">
+<meta itemprop="image" content="">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Create your Video</title>
+  <link rel="stylesheet" href='{% static "css/main1.css" %}' type="text/css" />
+    <link rel="stylesheet" href='{% static "css/main.css" %}' type="text/css" />
+    <link rel="stylesheet" href='{% static "css/video.css" %}' type="text/css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">  </script>
+
+<style>
+  select { font: 14pt Arial, sans-serif; }
+  div#controls div { display:none; border: 1px solid darkgray; border-radius: 5px; padding: 10px; width: 728px;}
+  div#controls div.display { display: block; }
+  #controls { padding-top: 24px;}
+  #effectMix { padding-top: 12px;}
+  #arranger { width:750px; margin: 25px auto}
+
+  </style>
+
+<!--   <ascript src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></ascript>
+ -->
+<!--   <script src='{% static "js/effect.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/waveshaper.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/jungle.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/effects.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/pingpong.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/apollo.js" %}' type="text/javascript"></script>
+
+
+  <script src='{% static "js/visualizer/events.js" %}' type="text/javascript"></script>
+
+  <script src='{% static "js/visualizer/base.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/visualizer/cameracontroller.js"" %}' type="text/javascript"></script>
+
+
+  <script src='{% static "js/visualizer/matrix4x4.js" %}' type="text/javascript"></script>
+
+  <script src='{% static "js/visualizer/visualizer.js" %}' type="text/javascript"></script>
+  <script src='{% static "js/visualizer/shader.js" %}' type="text/javascript"></script>
+
+ -->
+</head>
+<body>
+<div id= "elementToShare " > 
+<!-- <video id="video1" autoplay loop>
+            <source src= '{% static "video/dancer1.webm" %}'  type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.</video>
+
+<video id="video2" autoplay loop>
+            <source src= '{% static "video/soccer1.webm" %}'  type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.</video>
+<video id="chrome" class="transparent"  loop>
+            <source src= '{% static "video/chrome.webm" %}'  type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.</video> -->
+<div class="container " style="background-color: white">
+<center><h2>Webcam Feed </h2></center>  
+<video id="test" autoplay></video>
+
+
+  </div>
+<center>
+    <!-- <h1>Create your own Band</h1> -->
+
+
+<!-- <input id="recordButton" type="button" value="clickme" onclick="toggleRecording();" />
+
+<input id="playButton" type="button" value="clickme" onclick="play();" />
+<input id="downloadButton" type="button" value="clickme" onclick="download();" /> -->
+
+     <button id="record">Start Recording</button>
+      <button id="play" disabled>Play</button>
+      <button id="download" disabled>Download</button>
+
+
+    <!-- <p>Click and drag videos to show CSS filters; double click to trigger CSS animation. Resize page to resize videos.</p> -->
+    <!-- <p>Double click background to swap between image and video.</p> -->
+    <p>Select video background colour: <input id="colorInput" type="color"> (<span id="clearSpan">clear</span>)</p>
+  <div class="select">
+    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+  </div>
+
+  <div class="select">
+    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+<br><br>
+
+
+    </center>
+  </div>
+
+<div class="col-md-8 col-md-offset-2">
+ <video id="recorded" autoplay loop></video>
+</div>
+
+<!-- 
+  <div id="arranger">
+  <canvas id="view1" width="750" height="200"></canvas><br>
+  <canvas id="view2" width="750" height="200"></canvas>
+  <div>
+    <input type="radio" name="radioSet" value="data" 
+    onmousedown="analyserView1.setAnalysisType(ANALYSISTYPE_FREQUENCY); analyserView2.setAnalysisType(ANALYSISTYPE_FREQUENCY);">Frequency
+    <input type="radio" name="radioSet" value="data" 
+    onmousedown="analyserView1.setAnalysisType(ANALYSISTYPE_SONOGRAM); analyserView2.setAnalysisType(ANALYSISTYPE_SONOGRAM);">Sonogram
+    <input type="radio" name="radioSet" value="data" checked="checked" 
+    onmousedown="analyserView1.setAnalysisType(ANALYSISTYPE_3D_SONOGRAM); analyserView2.setAnalysisType(ANALYSISTYPE_3D_SONOGRAM);">3D Sonogram
+    <input type="radio" name="radioSet" value="data" 
+    onmousedown="analyserView1.setAnalysisType(ANALYSISTYPE_WAVEFORM); analyserView2.setAnalysisType(ANALYSISTYPE_WAVEFORM);">Waveform
+  </div>
+  <div id="effectMix">Effect: <select id="effect">
+    <option>Delay </option>
+    <option>Reverb </option>
+    <option>Distortion </option>
+    <option>Telephone </option>
+    <option>Gain LFO </option>
+    <option>Chorus </option>
+    <option>Flange </option>
+    <option>Ring mod </option>
+    <option>Stereo Chorus </option>
+    <option>Stereo Flange </option>
+    <option>Pitch Shifter </option>
+    <option>Mod Delay </option>
+    <option>Ping-pong delay</option>
+    <option>LFO Filter</option>
+    <option>Envelope Follower (testing only)</option>
+    <option>Autowah</option>
+    <option>Noise Gate</option>
+    <option>Wah Bass</option>
+    <option>Distorted Wah Chorus</option>
+    <option>Vibrato</option>
+    <option>BitCrusher</option>
+    <option>Apollo Quindar Tones</option>
+</select>
+&nbsp;&nbsp;Effect Mix: <input type="range" min="0.0" max="1.0" step="0.01" value="1.0" style="height: 20px; width: 200px;" 
+onInput="crossfade( event.target.value );">
+&nbsp;&nbsp;Mono input: <input type="checkbox" checked onchange="toggleMono()"> -->
+<!--          &nbsp;&nbsp;60Hz filter: <input type="checkbox" checked onchange="toggleFilter()">
+</div>
+<div id="controls">
+  <div id="delayControls">A basic digital delay.<br>
+    Delay time: <input id="dtime" type="range" min="0.01" max="3" step="0.01" value="0.15" style="height: 20px; width: 200px" onInput="if (dtime) dtime.delayTime.value = event.target.value;"><br>
+    Regen: <input id="dregen" type="range" min="0.0" max="1.0" step="0.01" value="0.75" style="height: 20px; width: 200px;" 
+    onInput="if (dregen) dregen.gain.value = event.target.value;">
+  </div>
+  <div id="reverbControls">A convolution-based "hall" reverb, using a generated impulse file. <!-- TODO: let user select other impulse response files, even auto-generate -->
+ <!--  </div> -->
+ <!--  <div id="distortionControls">A waveshaper, used to do distortion.  Note this will become more high-quality in the future, as we improve the antialiasing in waveshapers.<br>
+    Drive: <input type="range" min="0.01" max="20" step="0.01" value="5" style="height: 20px; width: 200px;" 
+    onInput="if (waveshaper) waveshaper.setDrive(event.target.value);">
+  </div>
+  <div id="telephoneControls">This effect pairs a low-pass and a high-pass filter to "telephonize" a sound - removing 
+    the high and low frequencies.  
+  </div>
+  <div id="gainLFOControls">This effect chops up the sound by using a low-frequency oscillator (LFO) to control the
+    gain.<br>
+    LFO type: 
+    <select id="lfotype" onchange="if (lfotype) lfotype.type = event.target.value;">
+      <option selected="selected" value="sine">SINE</option>
+      <option value="square">SQUARE</option>
+      <option value="sawtooth">SAWTOOTH</option>
+      <option value="triangle">TRIANGLE</option>
+    </select><br>
+    LFO speed: <input id="lfo" type="range" min="0.25" max="20" step="0.25" value="3" style="height: 20px; width: 200px;" onInput="if (lfo) lfo.frequency.value = event.target.value;"><br>
+    LFO depth: <input id="lfodepth" type="range" min="0.0" max="1.0" step="0.1" value="1.0" style="height: 20px; width: 200px;" onInput="if (lfodepth) lfodepth.gain.value = event.target.value;">
+  </div>
+   -->
+
+</div>
+
+
+<!--
+      <button onclick="this.innerText = toggleSample();">play</button>
+  -->
+
+
+
+
+  <script src='{% static "js/lib/pointer.js" %}' type="text/javascript"></script>
+<script src='{% static "js/main.js" %}' type="text/javascript"></script>
+<script src='{% static "js/band.js" %}' type="text/javascript"></script>
+
+
+
+</body>
+</html>

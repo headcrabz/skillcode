@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+
+{%block style%}
+<style>
+	p.test{
+		width: 11em;
+	word-wrap: break-word;
+}
+</style>
+{%endblock%}
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Here are the Results!</h1> </center>
+
+    <h3>Showing Content related to <b> <i>{{name}}</i></b></h3>
+    <hr>
+
+<!--     {%if not login %}
+    	
+    	you are not logged in !
+
+
+   	{%else%}
+   		<div  class ="row padlr20">
+   		<h4> Recommended for you! </h4>
+		{%for i in recproducts%}
+
+			<a href="{% url 'analysereviews' asin=i.asin %}"  style="padding: 20px" class="img-thumbnail" rel="prettyPhoto" title="{{ i }}"> 
+			
+				{%if j|stringformat:"s" == "Nothing" %} <img alt="{{ j }}" src='{% static "images/pages/all.png" %}' width="120px" height="120px">{% else %}<img alt="{{ j }}" src="{{ j }}" width="120px" height="120px">{%endif%}
+
+				<p class="test">{{i}}</p>
+				
+			</a>
+
+	{% if forloop.counter|divisibleby:5 %}</div><br><div class="row padlr20">{% endif %}
+		{% endfor %}
+
+
+	</div>   
+    {%endif%} -->
+
+	<div  class ="row padlr20">
+	<h4> Suggestions! </h4>
+		
+		{%if products%}
+
+		{%for j in  products%}
+			
+			{%for i in  j%}
+			<a href="{% url 'analysereviews' asin=i.asin %}"  style="padding: 20px" class="img-thumbnail" title="{{ i.title }}"> 
+			
+				{%if not i.product_images %} <img alt="{{ i.title}}" src='{% static "images/pages/all.png" %}' width="120px" height="120px">{% else %}<img alt="{{ i.title}}" src="{{i.product_images.500 }}" width="120px" height="120px">{%endif%}
+
+				<p class="test">{{i.title}}</p>
+				<!-- <p class="test">{{k}}</p> -->
+				
+			</a>
+	
+
+	{% if forloop.counter|divisibleby:5 %}</div><br><div class="row padlr20">{% endif %}
+		{% endfor %}
+{% endfor %}
+		{%endif%}
+	</div>   
+
+
+
+<!--     <div class="col-md-2" >   
+    {%for i in books%}
+
+   		<li>	 {{i}}  </li>
+
+    {%endfor%}
+    </div> -->
+   </div>
+    
+
+
+{% endblock %}

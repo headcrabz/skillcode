@@ -1,0 +1,66 @@
+  {% extends 'base.html' %}
+    {% load staticfiles %}  
+  {% load crispy_forms_tags %}
+
+  {%block style%}
+  <style type="text/css">
+       #map {
+          width: 70vh;
+          height: 50vh;
+        }
+
+        #floating-panel {
+          position: absolute;
+          top: 10px;
+          left: 25%;
+          z-index: 5;
+          background-color: #fff;
+          padding: 5px;
+          border: 1px solid #999;
+          text-align: center;
+          font-family: 'Roboto','sans-serif';
+          line-height: 30px;
+          padding-left: 10px;
+        }
+        #floating-panel {
+          background-color: #fff;
+          border: 1px solid #999;
+          left: 25%;
+          padding: 5px;
+          position: absolute;
+          top: 10px;
+          z-index: 5;
+        }
+
+
+      </style>
+
+
+  {% endblock %}
+
+  {% block content %}
+  <br><br>
+
+   <center><h1> Showing the concentration  of {{profile}} across US  </h1>
+    <br>
+    <p> (from dice) </p>
+   <hr>
+    <div class="container-fluid padtb" > 
+
+   <div class="col-md-8 col-md-offset-2">
+
+    <a class="btn btn-danger" href="{% url 'closematch' profile %}" role="button"> Check out detailed skills required to be a Software Engineer</a>
+
+   
+    <div class='tableauPlaceholder' id='viz1524351475188' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;R5&#47;R5W2YG8J7&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;R5W2YG8J7' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;R5&#47;R5W2YG8J7&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1524351475188');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+
+
+
+   </div>
+  </div>
+
+ </center>
+
+  {% endblock %}

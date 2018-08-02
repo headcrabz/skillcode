@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% block script%}
+
+
+
+
+{%endblock%}
+
+
+
+<!-- NAVBAR
+================================================== -->
+ {%block content%}
+
+
+<!-- job selection dropdown -->
+
+<div class="row">
+
+  <div class="col-md-3 col-xs-12 col-md-offset-4" >
+
+ 
+
+  <script type="text/javascript">
+    document.getElementById('sel1').value = "{{profile}}";
+  </script>
+</div >
+
+<hr>
+<br/> 
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container-fluid marketing">
+
+
+      <div class ="row padtb">
+        <center>
+        {%if profile %}
+          <h3><center><u> Showing profile for {{profile}}  </center> </h3></u></h3> 
+          <br>
+     
+          {%if profile|stringformat:"s" == "ApplicationDeveloper" or profile|stringformat:"s" == "Software Developers, Applications"%}
+
+          <img class="" src='{% static "images/pages/webdev.png" %}' alt="Generic placeholder image" width=40% height="340">
+          {%elif profile|stringformat:"s" == "Information Security Analysts"%}
+
+          <img class="" src='{% static "images/pages/cyber.jpeg" %}' alt="Generic placeholder image" width=40% height="340">
+
+          {%else%}
+           <img class="" src='{% static "images/pages/default-person.jpeg" %}' alt="Generic placeholder image" width=40% height="340">
+        {%endif %}
+          <br><br><hr>
+        {%endif %}
+      </center>
+      
+
+      </div>
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+
+        <div class="col-md-2 col-md-offset-2">
+          <h2> STEP -1 </h2>
+          <img class="img-circle" src='{% static "images/pages/weather.jpg" %}' alt="Generic placeholder image" width="140" height="140">
+          <h2>Jobs geography</h2>
+          <p>Check where the jobs are located</p>
+          <p><a class="btn btn-danger" href="{% url 'jobsGeog' profile %}" role="button">Try  Now &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+          <div class="col-md-2">
+            <h2>STEP -2</h2>
+          <img class="img-circle" src='{% static "images/pages/location.jpg" profile %}' alt="Generic placeholder image" width="140" height="140">
+        
+        <h2>Skills geography</h2>
+          <p>Check where the skills are located</p>
+          <p><a class="btn btn-danger" href="{% url 'skillsgeog' profile %}" role="button">Try  Now &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+
+        <div class="col-md-2">
+          <h2> STEP - 3 </h2>
+          <img class="img-circle" src='{% static "images/pages/keyword.png" %}' alt="Generic placeholder image" width="140" height="140">
+          <h2>Check location finances</h2>
+          <p>track the logistics parameter for the job</p>
+          <p><a class="btn btn-danger" href="{% url 'loclog' profile %}" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-md-2">
+          <h2>STEP - 4</h2>
+          <img class="img-circle" src='{% static "images/pages/imagery.jpg" %}' alt="Generic placeholder image" width="140" height="140">
+          <h2>TunoMeter</h2>
+          <p> Use our smart Engine to find best location - based on quality to quantity</p>
+          <p><a class="btn btn-danger" href="{% url 'tuno' profile %}" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+          <div class="col-md-2">
+            <h2>STEP - 5</h2>
+          <img class="img-circle" src='{% static "images/pages/imagery.jpg" %}' alt="Generic placeholder image" width="140" height="140">
+          <h2> GeniusFinder</h2>
+          <p> Find the best of the best</p>
+          <p><a class="btn btn-danger" href="{% url 'finetune' profile %}" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+
+
+      </div><!-- /.row -->
+      <br/>
+
+
+    
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+{%endblock%}
+

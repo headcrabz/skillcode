@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Enter the User Information account number</h1> 
+           <h3>  </h3>
+
+    </center>
+      <hr>
+<div class="row padtb">
+        <form action="{% url 'bank' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy}}
+        <center><input class="btn btn-info" type="submit" value="Get my Analysis!"/></center>
+    </form>
+
+    </div>
+    </div>
+
+
+{% endblock %}

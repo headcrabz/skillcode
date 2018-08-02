@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+
+{%block style%}
+<style>
+	p.test{
+		width: 11em;
+	word-wrap: break-word;
+}
+</style>
+{%endblock%}
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Here is the sensor data !</h1> </center>
+
+   <!--  <h3>Showing Content related to <b> <i>{{name}}</i></b></h3> -->
+    <hr>
+
+<!--     {%if not login %}
+    	
+    	you are not logged in !
+
+
+   	{%else%}
+   		<div  class ="row padlr20">
+   		<h4> Recommended for you! </h4>
+		{%for i in recproducts%}
+
+			<a href="{% url 'analysereviews' asin=i.asin %}"  style="padding: 20px" class="img-thumbnail" rel="prettyPhoto" title="{{ i }}"> 
+			
+				{%if j|stringformat:"s" == "Nothing" %} <img alt="{{ j }}" src='{% static "images/pages/all.png" %}' width="120px" height="120px">{% else %}<img alt="{{ j }}" src="{{ j }}" width="120px" height="120px">{%endif%}
+
+				<p class="test">{{i}}</p>
+				
+			</a>
+
+	{% if forloop.counter|divisibleby:5 %}</div><br><div class="row padlr20">{% endif %}
+		{% endfor %}
+
+
+	</div>   
+    {%endif%} -->
+
+	<div  class ="row padlr20">
+	
+		
+    <div class="panel" > 
+
+    <div class="panel-body">
+<h3> Sensor Data is    </h3>	
+     <h4> <b>Temperature is</b>  : 74 F</h4>
+     <h4> <b>Ambience Light is</b>  : 20 Lumens C</h4>
+     <!-- <h4> <b>Average Vibration is </b>  : 20 Lumens C</h4> -->
+     </div>
+      <div class="panel-body">
+      <h3> Weather today is   </h3>
+       <h4> <b>UV rays </b>  : 6</h4>
+        <h4> <b>Wind </b>  : 15mph</h4>
+         <h4> <b> Rain/Snow forecast</b>  : no</h4>
+          
+      </div>
+ 	<div class="panel-body">
+
+       <h3>Stream your webcam  here </h3>
+	<!-- 	<video id="test" autoplay></video> -->
+
+ 		<a class="btn btn-danger" href="{% url 'home' %}">View the cam</a>
+
+    </div>
+    </div>
+
+	
+
+
+	</div>   
+
+
+
+<!--     <div class="col-md-2" >   
+    {%for i in books%}
+
+   		<li>	 {{i}}  </li>
+
+    {%endfor%}
+    </div> -->
+   </div>
+    
+
+
+{% endblock %}

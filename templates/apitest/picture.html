@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+  {% load staticfiles %}  
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container padtb" style="padding-top: 100px" > 
+    <center><h1>Picture based Recommendations</h1> 
+           <h3> Please enter the url of the image below</h3>
+
+    </center>
+      <hr>
+<div class="row padtb">
+        <form action="{% url 'picture' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy}}
+        <center><input class="btn btn-info" type="submit" value="Get my Books!"/></center>
+    </form>
+
+    </div>
+    <!-- <div class="row">
+   <p> https://peopledotcom.files.wordpress.com/2016/08/obama-1024-6.jpg (for demo purpose only)</p>
+   </div> -->
+    <div class="row">
+
+        <div class="col-md-3">
+        <h4>People, Public Figure, Celebrities</h4>
+        <img  src='{% static "images/pages/obama.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Action/Context</h4>
+        <img  src='{% static "images/pages/golf.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Landmarks</h4>
+        <img  src='{% static "images/pages/liberty.jpg" %}' alt="Drop Picture here" width="250px" height="200px">
+        </div>
+        <div class="col-md-3">
+        <h4>Places</h4>
+        <img  src='{% static "images/pages/kitchen.jpg" %}' alt="Drop Picture here" width="250px" height="200px"> 
+        </div>
+    </div>
+
+
+    <div class="row">
+    <hr>
+      <center> <ul style="list-style: none" > 
+        <li ><h4>Cut down on Google! </h4></li>
+        
+       
+        <li><h4>More Cognititive, Picture is worth thousand words!</h4></li>
+        
+        
+        <li><h4>Landmarks</h4></li>
+        
+      
+        <li><h4>Places</h4></li>
+        
+        </ul></center>
+        <hr>
+    </div>
+
+
+ <hr>
+      <div class="panel"  >
+
+      <div class="panel-body">
+          <img  src='{% static "images/pages/drop-here.png" %}' alt="Drop Picture here" width="100%" height="50%">
+      </div>
+      </div>
+
+   </div>
+
+<!--         <li>logiend :  </li>
+        <li>logiend</li>
+        <li>
+         {{book_list}}</li>
+        <li> -->
+
+
+<!-- 
+{{access}}
+ -->
+
+   <!--  <img src="{{ embed.thumbnail_url }}" /> -->
+
+{% endblock %}
