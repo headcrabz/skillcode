@@ -33,7 +33,7 @@ django-filter==1.0.1
 django-template-utils==0.1.1
 djangorestframework==3.5.3
 docutils==0.12
-ecdsa==0.13
+ecdsa==0.13.3
 enable==4.5.1
 enaml==0.9.8
 enapp==1.0.0
