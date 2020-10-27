@@ -21,7 +21,7 @@ codetools==4.2.0
 colorama==0.3.7
 configobj==5.0.6
 configparser==3.5.0
-cryptography==1.7.2
+cryptography==3.2
 cycler==0.10.0
 decorator==4.0.9
 distribute-remove==1.0.0
