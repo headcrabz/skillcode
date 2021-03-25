@@ -130,7 +130,7 @@ python-dateutil==2.5.2
 python-openid==2.2.5
 pytz==2015.4
 pywin32==220
-PyYAML==3.11
+PyYAML==5.4
 pyzmq==15.2.0
 qtconsole==4.2.1
 requests==2.10.0
