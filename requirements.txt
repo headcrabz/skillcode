@@ -129,7 +129,7 @@ traitsui==5.1.0
 twilio==5.7.0
 typing==3.5.3.0
 tzlocal==1.2
-urllib3==1.22
+urllib3==1.26.5
 watson-developer-cloud==0.23.0
 whitenoise==3.3.1
 widgetsnbextension==3.2.1
