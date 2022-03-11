@@ -82,7 +82,7 @@ pbr==4.0.2
 pep8==1.7.0
 pexpect==2.4
 pickleshare==0.5
-Pillow==3.2.0
+Pillow==9.0.1
 plotly==1.9.10
 ply==3.8
 promise==2.1
