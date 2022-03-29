@@ -99,7 +99,7 @@ numpy==1.11.3
 oauthlib==2.0.1
 okonomiyaki==0.15.0
 pandas==0.19.2
-paramiko==2.1.1
+paramiko==2.10.1
 path.py==8.1.1
 patsy==0.4.1
 pep8==1.7.0
