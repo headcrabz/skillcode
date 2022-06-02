@@ -55,7 +55,7 @@ graphql-core==1.0.1
 graphql-relay==0.4.5
 grits-client==0.1
 hatcher==0.10.1
-html5lib==0.999
+html5lib==0.99999999
 httplib2==0.10.2
 humanize==0.5.1
 idle==2.7.3
