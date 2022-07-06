@@ -43,7 +43,7 @@ graphql-core==2.0
 graphql-relay==0.4.5
 gunicorn==19.8.1
 hatcher==0.10.1
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.10.3
 humanize==0.5.1
 idna==2.2
